@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page non trouvée - EMA Digital Printing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background-image: url('{{ url_for('static', filename='background.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(42, 42, 42, 0.7); /* Reduced opacity */
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto;
+            margin-top: 20vh;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(211, 47, 47, 0.4);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #dddddd;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 18px;
+            color: #d32f2f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+    footer {
+      text-align: center;
+      padding: 15px 10px;
+      background-color: #000000;
+      color: #eeeeee;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #d32f2f;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>404 - Page non trouvée</h1>
+        <p>Désolé, la page que vous cherchez n'existe pas ou a été déplacée.</p>
+        <a href="{{ url_for('index') }}">Retour à l'accueil</a>
+    </div>
+
+<footer>
+  <p>&copy; 2025 EMA Digital Printing - Votre partenaire en impression de qualité.</p>
+  <p>
+    <a href="{{ url_for('logout') }}">Se déconnecter</a> |
+    <a href="https://www.instagram.com/digital_printing_ema?igsh=MTk4d3RoeDhmMmZyag==" target="_blank">Instagram</a> |
+    <a href="https://www.facebook.com/profile.php?id=61572879152697&mibextid=ZbWKwL" target="_blank">Facebook</a> |
+    <a href="https://www.instagram.com/box_de_luxe?igsh=MWRjYWl0cHBrdmo4OQ==" target="_blank">Box de Luxe</a> |
+    <a href="mailto:digitalprinitingema@gmail.com">Email</a> |
+    <a href="tel:+213771138482">+213 771 13 84 82</a> |
+    <a href="https://maps.app.goo.gl/32NoxaBuNwgayPE89?g_st=aw" target="_blank">Nous trouver</a>
+  </p>
+</footer>
+</body>
+</html>

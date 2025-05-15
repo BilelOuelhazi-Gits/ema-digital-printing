@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMA DIGITAL PRINTING</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #fff;
+  color: #333;
+}
+header {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* HERO */
+header {
+  background: linear-gradient(135deg, #b71c1c, #f44336);
+  color: white;
+  padding-top: 0; /* Change this */
+
+  text-align: center;
+  position: relative;
+
+}
+
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeInUp 1.5s ease-in-out 0.5s;
+}
+
+.cta-hero {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #d32f2f;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+.cta-hero:hover {
+  background: #d32f2f;
+  color: white;
+}
+
+/* Service Cards */
+.service {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 280px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #d32f2f;
+  font-size: 1.8rem;
+}
+
+.card p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.service-img:hover {
+  transform: scale(1.1);
+}
+
+/* TESTIMONIALS */
+.testimonial {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff5f5;
+  border-left: 4px solid #d32f2f;
+  border-radius: 8px;
+  font-style: italic;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  animation: slideUp 1.5s ease-out;
+}
+
+.testimonials {
+  text-align: center;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* Before/After */
+.before-after-images {
+  display: flex;
+  gap: 3rem; /* Increased the gap between the images */
+  justify-content: center;
+  margin-top: 2rem;
+  animation: zoomIn 1s ease-out;
+}
+
+.ba-img {
+  width: 45%;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.ba-img:hover {
+  transform: scale(1.1); /* Make the image bigger on hover */
+}
+
+
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  text-align: center;
+  animation: fadeInUp 2s ease-in-out;
+}
+
+.stat h3 {
+  margin: 0;
+  color: #d32f2f;
+  font-size: 2rem;
+}
+
+.stat p {
+  margin: 0.5rem 0 0;
+}
+
+/* STICKY BAR */
+.sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #d32f2f;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+}
+
+.sticky-bar button {
+  background: white;
+  color: #d32f2f;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* SECTION SEPARATOR */
+.wave {
+  display: block;
+  height: 80px;
+  background: url('data:image/svg+xml;base64,...') repeat-x;
+  background-size: cover;
+  margin: -2rem 0;
+}
+
+/* New Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+  .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d32f2f;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #d32f2f;
+  border-radius: 2px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Add these styles to your CSS */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  height: 150px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.site-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+@media (max-width: 600px) {
+  .logo {
+    height: 60px;
+  }
+}
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-btn {
+  background: white;
+  color: #d32f2f;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #b71c1c;
+  color: white;
+}
+
+.hero-content {
+  padding-top: 8rem;
+  text-align: center;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+<!-- Add this inside <body> -->
+<header>
+  <div class="top-bar">
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="EMA Logo" class="logo">
+
+    </div>
+
+    <div class="nav-buttons">
+
+
+      {% if session.get('user_id') %}
+        <span class="user-name">Bienvenue, {{ name }}</span>
+        <a href="{{ url_for('logout') }}">
+          <button class="nav-btn">Se déconnecter</button>
+        </a>
+      {% else %}
+        <a href="{{ url_for('login') }}">
+          <button class="nav-btn">Connexion / Inscription</button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <h1>EMA DIGITAL PRINTING</h1>
+    <p>
+      Là où il y a un grand choix de supports imprimables, une livraison rapide, des supports entièrement personnalisés et une qualité d’impression garantie.
+    </p>
+
+
+        <a href="{{ url_for('AboutUs') }}">
+      <button class="cta-hero">À propos de nous</button>
+    </a>
+<button class="cta-hero" onclick="scrollToSection()">Demander un devis</button>
+
+<button class="cta-hero" onclick="window.location.href='{{ url_for('track_requests') }}'">Suivi de vos demandes</button>
+
+
+
+
+
+
+<script>
+  function scrollToSection() {
+    document.getElementById('services-section').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+
+
+  </div>
+  <br></br>
+</header>
+
+
+  <div class="wave"></div>
+
+<section id="services-section">
+  <h2 data-aos="fade-up" data-aos-duration="1000" class="section-title">Nos Services</h2>
+
+  <div class="service">
+    <div class="card" data-aos="fade-up" data-aos-delay="300" onclick="window.location.href='{{ url_for('select_service', service_name='Services dimpression standard') }}'">
+      <h3>Impression tous supports</h3>
+      <p>Cartes de visite, brochures, dépliants, calendriers, étiquettes, bloc note, catalogues...</p>
+      <img src="{{ url_for('static', filename='image1.jpeg') }}" alt="Impression tous supports" class="service-img" data-aos="zoom-in" data-aos-duration="1000">
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="400" onclick="window.location.href='{{ url_for('select_service', service_name='Impression grand format') }}'">
+      <h3>Grand Format</h3>
+      <p>Banderoles, bâches, affiches, roll-up, vinyles avec finition pro.</p>
+      <img src="{{ url_for('static', filename='image2.jpeg') }}" alt="Grand Format" class="service-img" data-aos="zoom-in" data-aos-duration="1000">
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="500" onclick="window.location.href='{{ url_for('select_service', service_name='Articles promotionnels et goodies') }}'">
+      <h3>Objets Publicitaires</h3>
+      <p>Goodies, vêtements, objets événementiels pour une communication efficace.</p>
+      <img src="{{ url_for('static', filename='image3.jpeg') }}" alt="Objets Publicitaires" class="service-img" data-aos="zoom-in" data-aos-duration="1000">
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="600" onclick="window.location.href='{{ url_for('select_service', service_name='Impression textile') }}'">
+      <h3>Textile</h3>
+      <p>Flocage, sérigraphie, broderie sur une large gamme de vêtements.</p>
+      <img src="{{ url_for('static', filename='image4.jpeg') }}" alt="Textile" class="service-img" data-aos="zoom-in" data-aos-duration="1000">
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="before-after" data-aos="fade-up" data-aos-duration="1000">
+ <h2 data-aos="fade-up" data-aos-duration="1000" class="section-title">Avant / Après</h2>
+    <div class="before-after-images" data-aos="fade-up" data-aos-duration="1200">
+      <img src="{{ url_for('static', filename='image4.jpeg') }}" alt="Avant" class="ba-img">
+      <img src="{{ url_for('static', filename='image4.jpeg') }}" alt="Après" class="ba-img">
+    </div>
+  </section>
+
+  <section class="testimonials" data-aos="fade-up" data-aos-duration="1500">
+    <h2>Avis Clients</h2>
+    <div class="testimonial" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500">
+      <p>“Service ultra rapide et qualité top. Mes cartes de visite sont magnifiques !”</p>
+      <strong>— Salma D.</strong>
+    </div>
+    <div class="testimonial" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+      <p>“Le grand format est parfait pour mon événement, je recommande à 100% !”</p>
+      <strong>— Ahmed T.</strong>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat" data-aos="fade-up" data-aos-duration="2000">
+      <h3>200+</h3>
+      <p>Projets réalisés</p>
+    </div>
+    <div class="stat" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="200">
+      <h3>500+</h3>
+      <p>Clients satisfaits</p>
+    </div>
+    <div class="stat" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
+      <h3>5</h3>
+      <p>Années d'expérience</p>
+    </div>
+  </section>
+
+  <div class="sticky-bar">
+    <p>Contactez-nous pour un devis personnalisé !</p>
+    <button onclick="scrollToSection()">Demander un devis</button>
+  </div>
+<br></br>
+
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>

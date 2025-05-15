@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulaire de service - EMA Digital Printing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background-color: #1c1c1c;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      background-image: url('{{ url_for('static', filename='background.png') }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8); /* Reduced opacity */
+      color: #ffffff;
+      padding: 10px 20px; /* Reduced padding */
+      border-bottom: 2px solid #d32f2f;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .header-content img {
+      height: 150px; /* Reduced height */
+      width: auto;
+    }
+
+    .header-content div {
+      max-width: 500px;
+    }
+
+    .header-content h1 {
+      font-size: 24px; /* Reduced font size */
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .header-content p {
+      font-size: 14px; /* Reduced font size */
+      margin-top: 5px;
+      color: #dddddd;
+    }
+
+    .form-container {
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+      flex-grow: 1; /* Allow form container to take remaining space */
+    }
+
+    form {
+      background-color: #2a2a2a;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #dddddd;
+    }
+
+    select, textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #444444;
+      background-color: #333333;
+      color: #f5f5f5;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #d32f2f;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #b71c1c;
+    }
+
+.ema-footer {
+  background: #111;
+  color: #ccc;
+  padding: 4rem 1rem 2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.ema-footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.footer-col {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer-col h2, .footer-col h4 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer-col p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a i {
+  margin-right: 8px;
+  color: #f44336;
+  transition: transform 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+.footer-col ul li a:hover i {
+  transform: scale(1.2);
+  color: #e53935;
+}
+
+.social-icons li a {
+  display: flex;
+  align-items: center;
+}
+
+.ema-footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ema-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-col {
+    margin-bottom: 2rem;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <div class="header-content">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="EMA Logo">
+      <div>
+        <h1>Formulaire de service - EMA Digital Printing</h1>
+        <p>Faites votre demande d'impression personnalisée en quelques étapes simples</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="form-container">
+    <h2>{{ service_name }}</h2>
+
+    <form action="{{ url_for('submit_service_form') }}" method="POST">
+      <input type="hidden" name="service_name" value="{{ service_name }}">
+
+      <label for="sub_service">Choisissez un sous-service :</label>
+      <select name="sub_service" id="sub_service" required>
+        {% if service_name == "Services dimpression standard" %}
+          <option>Cartes de visite</option>
+          <option>Brochures</option>
+          <option>Flyers</option>
+          <option>Calendriers</option>
+          <option>Étiquettes</option>
+          <option>Blocs-notes</option>
+          <option>Catalogues</option>
+        {% elif service_name == "Impression grand format" %}
+          <option>Bannières</option>
+          <option>Tarpaulines</option>
+          <option>Affiches</option>
+          <option>Roll-ups</option>
+          <option>Impressions sur vinyle</option>
+          <option>Signalétique personnalisée</option>
+        {% elif service_name == "Articles promotionnels et goodies" %}
+          <option>Articles promotionnels</option>
+          <option>Goodies personnalisés</option>
+          <option>Vêtements personnalisés</option>
+          <option>Impression pour événements</option>
+        {% elif service_name == "Impression textile" %}
+          <option>Flockage</option>
+          <option>Sérigraphie</option>
+          <option>Broderie</option>
+          <option>Marquage textile personnalisé</option>
+        {% endif %}
+      </select>
+
+      <br><br>
+      <label for="description">Description :</label><br>
+      <textarea name="description" required></textarea>
+
+      <br><br>
+      <label for="quantity">Quantité :</label>
+      <input type="number" name="quantity" min="1" required>
+
+      <br><br>
+      <button type="submit">Soumettre la demande</button>
+    </form>
+  </div>
+
+<footer class="ema-footer">
+  <div class="ema-footer-content">
+    <div class="footer-col branding">
+      <h2>EMA Digital Printing</h2>
+      <p>Votre partenaire en impression de qualité.<br>Créativité. Fiabilité. Impact.</p>
+    </div>
+    <div class="footer-col links">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
+        <li><a href="https://maps.app.goo.gl/32NoxaBuNwgayPE89?g_st=aw" target="_blank"><i class="fas fa-map-marker-alt"></i> Nous trouver</a></li>
+        <li><a href="mailto:digitalprinitingema@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+        <li><a href="tel:+213771138482"><i class="fas fa-phone"></i> +213 771 13 84 82</a></li>
+      </ul>
+    </div>
+    <div class="footer-col social">
+      <h4>Suivez-nous</h4>
+      <ul class="social-icons">
+        <li><a href="https://www.instagram.com/digital_printing_ema?igsh=MTk4d3RoeDhmMmZyag==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61572879152697&mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+        <li><a href="https://www.instagram.com/box_de_luxe?igsh=MWRjYWl0cHBrdmo4OQ==" target="_blank"><i class="fab fa-instagram"></i> Box de Luxe</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ema-footer-bottom">
+    <p>&copy; 2025 EMA Digital Printing — Tous droits réservés.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
